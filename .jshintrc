@@ -1,0 +1,6 @@
+{
+    "laxbreak" : true,
+    "loopfunc" : true,
+    "evil" : true,
+    "esversion" : 6
+}

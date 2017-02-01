@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Knockout EcmaScript6 Foundation Frontend Stack Testcase</title>
+        <link href="/css/main.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <!-- app scope -->
+    <body id="app">
+
+        <!-- page scope -->
+        <main id="page">
+            <!-- stuff from app scope -->
+            <div id="foundation-test">
+                <p class="foo">some content</p>
+                <div class="bar">to align</div>
+                <a class="button" data-bind="click: $root.addStuff.bind($root)">caption</a>
+                <ul class="stuff" data-bind="foreach: {data : $root.viewModel.stuff, as : 'stuff'}">
+                    <li data-bind="text: stuff"></li>
+                </ul>
+            </div>
+
+            <!-- a component from the app scope -->
+            <!-- ko component: {
+    			name : 'Component',
+    			params : {
+    				app : $root,
+    				model : {}
+    			}
+    		} --><!-- /ko -->
+
+            <!-- a component from the page scope -->
+            <!-- ko component: {
+    			name : 'PageComponent',
+    			params : {
+    				app : $root,
+    				model : {}
+    			}
+    		} --><!-- /ko -->
+
+            <!-- stuff from the page scope -->
+            <div class="scoped-contextes-test" data-bind="text: $data.viewModel.stuff"></div>
+        </main>
+
+
+        <!-- components of app scope -->
+        <script type="text/html" id="component-template">
+        	<div
+        		class="component"
+        		data-bind="
+                    attr: {
+        				'data-id' : $component.viewModel.id
+        			},
+        			template: {afterRender : $component.alert},
+        			css: {
+        				'active' : $component.viewModel.active,
+        			}
+        		"
+        	>
+        		<h1 data-bind="text: $component.viewModel.headline"></h1>
+                <p data-bind="text: $component.viewModel.copytext"></p>
+        	</div>
+        </script>
+
+        <!-- components of page scope -->
+        <script type="text/html" id="page-component-template">
+        	<h2 data-bind="html: $component.viewModel.message"></h2>
+        </script>
+
+
+
+        <script src="/js/lib/lib.js"></script>
+		<script src="/js/bundles/app.js"></script>
+        <script src="/js/bundles/page.js"></script>
+		<script>
+			(function(){
+				require(['app-bundle'], function(){
+                    require(['page-bundle'], function(){
+                        window.APP.start();
+                    });
+                });
+			}());
+		</script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "knockout-es6-setup",
+  "version": "1.0.0",
+  "private": "true",
+  "dependencies": {
+    "jqueryannex": "0.36.0",
+    "lodash": "~4.15.0",
+    "knockout": "knockoutjs#^3.4.1",
+    "requirejs": "^2.3.2",
+    "foundation-sites": "^6.3.0",
+    "what-input": "^4.0.6"
+  },
+  "resolutions": {
+    "jquery": "~2.2.0"
+  }
+}

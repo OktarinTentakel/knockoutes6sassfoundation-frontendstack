@@ -1,0 +1,36 @@
+html,
+body {
+    background-color: lightblue;
+}
+
+
+
+#foundation-test {
+    @include flex-grid-row;
+
+    margin-top: 25vh;
+
+    .foo {
+        @include flex-grid-column(4);
+
+        margin: 0;
+    }
+
+    .bar {
+        @include flex-grid-column(8);
+    }
+
+    .button {
+        @include button();
+        @include flex-grid-column(12);
+    }
+
+    .stuff {
+        @include flex-grid-column(12);
+        @include flex-grid-row();
+
+        li {
+            @include flex-grid-column(6);
+        }
+    }
+}
